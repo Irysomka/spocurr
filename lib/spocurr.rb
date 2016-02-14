@@ -1,13 +1,13 @@
 class Money
   attr_accessor :amount, :currency
-  
+
   def initialize(amount, currency)
     @amount = amount
     @currency = currency
   end
 
   def inspect
-    "#{@amount} #{@currency}"     
+    "#{@amount} #{@currency}"
   end
 
   def self.conversion_rates(base_currency=nil, rates_hash=nil)
@@ -24,5 +24,6 @@ class Money
   end
 
   def convert_to(currency)
+    "#{sprintf('%.2f', @amount * Money.rates_hash[currency])} #{currency}"
   end
 end
